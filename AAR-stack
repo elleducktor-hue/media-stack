@@ -1,0 +1,170 @@
+version: "3.9"
+
+services:
+  gluetun:
+    image: qmcgaw/gluetun:latest
+    container_name: gluetun-gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    ports:
+      - 8080:8080        # qBittorrent WebUI
+      - 7878:7878        # Radarr WebUI
+      - 8989:8989        # Sonarr WebUI
+      - 9117:9117        # Jackett WebUI
+      - 9696:9696        # Prowlarr WebUI
+      - 8096:8096        # Jellyfin HTTP
+      - 8920:8920        # Jellyfin HTTPS
+      - 6969:6969        # Whisparr
+      - 7575:7575        # Homarr
+      - 8686:8686        # Lidarr
+    volumes:
+      - /gluetun:/gluetun
+    environment:
+      - VPN_SERVICE_PROVIDER=protonvpn
+      - VPN_TYPE=openvpn
+      - OPENVPN_USER=BHufUufI2tcoWu2Z
+      - OPENVPN_PASSWORD=OTWAJj3ElhwlKVumIECFpCEXD64vZh9Q
+      - SERVER_COUNTRIES=UNITED STATES
+      - TZ=America/Los_Angeles
+      - LOCAL_NETWORK=10.0.0.0/24
+    networks:
+      - vpn-net
+    restart: unless-stopped
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent-gluetun
+    network_mode: service:gluetun
+    depends_on:
+      - gluetun
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+      - WEBUI_PORT=8080
+    volumes:
+      - /srv/docker/qbittorrent/config:/config
+      - /srv/media/downloads:/downloads
+    restart: unless-stopped
+
+  jackett:
+    image: linuxserver/jackett
+    container_name: jackett-gluetun
+    network_mode: service:gluetun
+    depends_on:
+      - gluetun
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    volumes:
+      - /srv/docker/jackett/config:/config
+    restart: unless-stopped
+
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr-gluetun
+    network_mode: service:gluetun
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    volumes:
+      - /srv/media/movies:/movies
+      - /srv/media/xxx:/xxx
+      - /srv/media/downloads:/downloads
+      - /srv/docker/radarr/config:/config
+    restart: unless-stopped
+
+  sonarr:
+    image: linuxserver/sonarr
+    container_name: sonarr-gluetun
+    network_mode: service:gluetun
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    volumes:
+      - /srv/media/tv:/tv
+      - /srv/media/downloads:/downloads
+      - /srv/docker/sonarr/config:/config
+    restart: unless-stopped
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr-gluetun
+    network_mode: service:gluetun
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    volumes:
+      - /srv/docker/prowlarr/config:/config
+    restart: unless-stopped
+
+  jellyfin:
+    image: linuxserver/jellyfin
+    container_name: jellyfin-gluetun
+    network_mode: service:gluetun
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    volumes:
+      - /srv/docker/jellyfin/config:/config
+      - /srv/media/movies:/movies
+      - /srv/media/tv:/tv
+      - /srv/media/xxx:/xxx
+      - /srv/media/music:/music
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+  
+    restart: unless-stopped
+
+  whisparr:
+    image: ghcr.io/thespad/whisparr:latest
+    container_name: whisparr-gluetun
+    network_mode: service:gluetun
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    volumes:
+      - /srv/media/downloads:/downloads
+      - /srv/media/xxx:/xxx
+      - /srv/docker/whisparr/config:/config
+      - /srv/docker/whisparr/data:/data
+    restart: unless-stopped  
+    
+    
+  lidarr:
+    image: ghcr.io/linuxserver/lidarr:latest
+    container_name: lidarr-gluetun
+    network_mode: "service:gluetun"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    volumes:
+      - /srv/docker/lidarr/config:/config
+      - /srv/media/downloads:/downloads
+      - /srv/media/music:/music
+    restart: unless-stopped
+
+  homarr:
+    container_name: homarr
+    image: ghcr.io/homarr-labs/homarr:latest
+    network_mode: service:gluetun
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Optional, only if you want docker integration
+      - /srv/docker/homarr/data:/data
+    environment:
+      - SECRET_ENCRYPTION_KEY=1eaf694b69c0036f9cfe6cdbfc68fe0f0779d78c44de293466ddbdadbbbb37a7     
+      
+
+networks:
+  vpn-net:
+    driver: bridge
