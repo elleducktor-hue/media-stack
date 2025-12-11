@@ -17,6 +17,18 @@ Reqirements:
 This has been tested on Linux based opperating systems. You may need to change file directories and permissions for a different OS.
 Must have protonVPN account to hide torrent traffic behind GLuetun from your isp.
 
+Directions:
+
+create and use creditials from protonVPN for vpn to work. In AAR-stack in gluetun look for and replace creditials
+ - OPENVPN_USER=add_your_usrname-here
+ - OPENVPN_PASSWORD=add_your_password-here
+
+Change your local network. Look for and change to your network ip
+- LOCAL_NETWORK=10.0.0.0/24
+
+Addjust time zone as required
+- TZ=America/Los_Angeles
+
 Commands for creating and giving folders correct permisions:
 
 # ---- Create Media folders ---- Copy and Paste
@@ -52,5 +64,15 @@ sudo mkdir -p /srv/docker/homarr/data && sudo chown -R 1000:1000 /srv/docker/hom
 
 # ---- Jellyfin ----
 sudo mkdir -p /srv/docker/jellyfin/config && sudo chown -R 1000:1000 /srv/docker/jellyfin/config && sudo chmod -R 775 /srv/docker/jellyfin/config
+
+In directory where you saved AAR-stack rename it to docker-compose.yaml and run in terminal
+docker compose up -d --build
+
+If using portainer " Recomended " 
+Live veiw-> stacks-> new stack-> 
+give name gluetun-gluetunvpn
+compy and paste contents of ARR-stack into file editor and deploy stack after editing gluetun usrnam and pawwrds
+
+
 
 
