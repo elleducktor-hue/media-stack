@@ -42,7 +42,7 @@ Homarr requires a 64 character sh secret key
 Go here to generate one and then add it under homarrs settings. Look for this in docker-compose under homarr
   
   environment:
-      - SECRET_ENCRYPTION_KEY=
+      -  SECRET_ENCRYPTION_KEY=add_your_key_here
       
 Generate the key here.........
 
