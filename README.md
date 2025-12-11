@@ -65,6 +65,8 @@ sudo mkdir -p /srv/docker/homarr/data && sudo chown -R 1000:1000 /srv/docker/hom
 # ---- Jellyfin ----
 sudo mkdir -p /srv/docker/jellyfin/config && sudo chown -R 1000:1000 /srv/docker/jellyfin/config && sudo chmod -R 775 /srv/docker/jellyfin/config
 
+HHOW TO DEPLOY
+-----------------------------
 In directory where you saved AAR-stack rename it to docker-compose.yaml and run in terminal
 docker compose up -d --build
 
