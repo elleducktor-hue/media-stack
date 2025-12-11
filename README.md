@@ -37,32 +37,32 @@ sudo mkdir -p /srv/media/movies && sudo chown -R 1000:1000 /srv/media/movies && 
 sudo mkdir -p /srv/media/tv && sudo chown -R 1000:1000 /srv/media/tv && sudo chmod -R 775 /srv/media/tv
 sudo mkdir -p /srv/media/music && sudo chown -R 1000:1000 /srv/media/music && sudo chmod -R 775 /srv/media/music
 
- ---- Lidarr ----
+# ---- Lidarr ----
 sudo mkdir -p /srv/docker/lidarr/config && sudo chown -R 1000:1000 /srv/docker/lidarr && sudo chmod -R 775 /srv/docker/lidarr
 
- ---- qBittorrent ----
+# ---- qBittorrent ----
 sudo mkdir -p /srv/docker/qbittorrent/config && sudo chown -R 1000:1000 /srv/docker/qbittorrent/config && sudo chmod -R 775 /srv/docker/qbittorrent/config
 
------ Jackett ----
+# ----- Jackett ----
 sudo mkdir -p /srv/docker/jackett/config && sudo chown -R 1000:1000 /srv/docker/jackett/config && sudo chmod -R 775 /srv/docker/jackett/config
 
- ---- Radarr ----
+# ---- Radarr ----
 sudo mkdir -p /srv/docker/radarr/config && sudo chown -R 1000:1000 /srv/docker/radarr/config && sudo chmod -R 775 /srv/docker/radarr/config
 
- ---- Sonarr ----
+# ---- Sonarr ----
 sudo mkdir -p /srv/docker/sonarr/config && sudo chown -R 1000:1000 /srv/docker/sonarr/config && sudo chmod -R 775 /srv/docker/sonarr/config
 
- ---- Prowlarr ----
+# ---- Prowlarr ----
 sudo mkdir -p /srv/docker/prowlarr/config && sudo chown -R 1000:1000 /srv/docker/prowlarr/config && sudo chmod -R 775 /srv/docker/prowlarr/config
 
- ---- Whisparr ----
+# ---- Whisparr ----
 sudo mkdir -p /srv/docker/whisparr/config && sudo chown -R 1000:1000 /srv/docker/whisparr/config && sudo chmod -R 775 /srv/docker/whisparr/config
 sudo mkdir -p /srv/docker/whisparr/data && sudo chown -R 1000:1000 /srv/docker/whisparr/data && sudo chmod -R 775 /srv/docker/whisparr/data
 
- ---- Homarr ----
+# ---- Homarr ----
 sudo mkdir -p /srv/docker/homarr/data && sudo chown -R 1000:1000 /srv/docker/homarr/data && sudo chmod -R 775 /srv/docker/homarr/data
 
- ---- Jellyfin ----
+# ---- Jellyfin ----
 sudo mkdir -p /srv/docker/jellyfin/config && sudo chown -R 1000:1000 /srv/docker/jellyfin/config && sudo chmod -R 775 /srv/docker/jellyfin/config
 
 In directory where you saved AAR-stack rename it to docker-compose.yaml and run in terminal
