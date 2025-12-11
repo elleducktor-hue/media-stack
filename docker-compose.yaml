@@ -162,7 +162,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock # Optional, only if you want docker integration
       - /srv/docker/homarr/data:/data
     environment:
-      - SECRET_ENCRYPTION_KEY=1eaf694b69c0036f9cfe6cdbfc68fe0f0779d78c44de293466ddbdadbbbb37a7     
+      - SECRET_ENCRYPTION_KEY=add_your_key_here   
       
 
 networks:
