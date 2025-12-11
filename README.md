@@ -87,7 +87,7 @@ docker-compose up -d --build
 If using portainer " Recomended " 
 Live veiw-> stacks-> new stack-> 
 give name gluetun-gluetunvpn
-copy and paste contents of ARR-stack into file editor and deploy stack after editing gluetun usrnam and pawwrds
+copy and paste contents of docker-compose into file editor and deploy stack after editing gluetun usrnam and pawwrds
 
 
 
