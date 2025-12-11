@@ -81,7 +81,8 @@ sudo mkdir -p /srv/docker/jellyfin/config && sudo chown -R 1000:1000 /srv/docker
 HOW TO DEPLOY
 -----------------------------
 Run in terminal
-docker compose up -d --build
+---------------
+docker-compose up -d --build
 
 If using portainer " Recomended " 
 Live veiw-> stacks-> new stack-> 
