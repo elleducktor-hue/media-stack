@@ -1,5 +1,4 @@
 # HOMARR DASHBOARD
-![Alt text](./img/homarr.png)
 ![Project Logo](./img/homarr.png)
 
 
