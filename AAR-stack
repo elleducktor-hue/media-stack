@@ -24,8 +24,8 @@ services:
     environment:
       - VPN_SERVICE_PROVIDER=protonvpn
       - VPN_TYPE=openvpn
-      - OPENVPN_USER=BHufUufI2tcoWu2Z
-      - OPENVPN_PASSWORD=OTWAJj3ElhwlKVumIECFpCEXD64vZh9Q
+      - OPENVPN_USER=add_your_usrname-here
+      - OPENVPN_PASSWORD=add_your_password-here
       - SERVER_COUNTRIES=UNITED STATES
       - TZ=America/Los_Angeles
       - LOCAL_NETWORK=10.0.0.0/24
