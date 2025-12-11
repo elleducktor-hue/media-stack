@@ -80,7 +80,7 @@ sudo mkdir -p /srv/docker/jellyfin/config && sudo chown -R 1000:1000 /srv/docker
 
 HOW TO DEPLOY
 -----------------------------
-In directory where you saved AAR-stack rename it to docker-compose.yaml and run in terminal
+Run in terminal
 docker compose up -d --build
 
 If using portainer " Recomended " 
