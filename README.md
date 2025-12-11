@@ -17,7 +17,7 @@ Reqirements:
 ------------------------------
 
 This has been tested on Linux based opperating systems. You may need to change file directories and permissions for a different OS.
-Must have protonVPN account to hide torrent traffic behind GLuetun from your isp.
+Must have protonVPN account to hide torrent traffic behind Gluetun from your isp.
 
 Directions:
 ------------------------------
