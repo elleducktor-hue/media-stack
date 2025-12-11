@@ -36,7 +36,20 @@ Change your local network. Look for and change to your network ip
 Addjust time zone as required
 - TZ=America/Los_Angeles
 
-Commands for creating and giving folders correct permisions:
+- -------------------------
+
+Homarr requires a 64 character sh secret key
+Go here to generate one and then add it under homarrs settings. Look for this in docker-compose under homarr
+  
+  environment:
+      - SECRET_ENCRYPTION_KEY=
+      
+Generate the key here.........
+
+https://secretkeygen.vercel.app/
+
+
+# Commands for creating and giving folders correct permisions:
 
 Create Media folders ---- Copy and Paste
 -------------------------------
