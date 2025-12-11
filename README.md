@@ -49,7 +49,7 @@ Generate the key here.........
 https://secretkeygen.vercel.app/
 
 
-# Commands for creating and giving folders correct permisions:
+# Creating and giving folders correct permisions:
 
 Create Media folders ---- Copy and Paste
 -------------------------------
